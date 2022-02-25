@@ -1,1 +1,1 @@
-web: gunicorn lasertag.wsgi:application
+web: cd lasertag && gunicorn lasertag.wsgi
