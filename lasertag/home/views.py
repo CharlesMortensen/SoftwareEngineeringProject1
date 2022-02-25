@@ -7,11 +7,11 @@ def index(request):
     return render(request, 'home/index.html')
     
 def player_entry(request):
-    """if request.method == 'POST':
-        formset = PlayerFormSet(request.POST)
 
-    else:
-        formset = PlayerFormSet()"""
-    PlayerFormSet = formset_factory(PlayerForm, extra=19)
+    RedPlayerFormSet = formset_factory(PlayerForm, extra=19)
+    BluePlayerFormSet = formset_factory(PlayerForm, extra=19)
 
-    return render(request, 'home/player_entry.html', {'title': 'Player Entry', 'formset': PlayerFormSet})
+    red_player_formset = RedPlayerFormSet(prefix="red")
+    blue_player_formset = BluePlayerFormSet(prefix="blue")
+
+    return render(request, 'home/player_entry.html', {'title': 'Player Entry', 'red_player_formset': red_player_formset, 'blue_player_formset': blue_player_formset})

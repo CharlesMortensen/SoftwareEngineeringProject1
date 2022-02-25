@@ -6,6 +6,3 @@ class PlayerForm(ModelForm):
         model = Player
         fields = ['id', 'first_name', 'last_name', 'codename']
         labels = {'id': ""}
-
-form = PlayerForm()
-PlayerFormSet = formset_factory(PlayerForm, extra=19)

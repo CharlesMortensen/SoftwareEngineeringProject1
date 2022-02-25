@@ -8,58 +8,70 @@
         {%endif%}
     </head>
     <body>
-    
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            padding: 5px;
-        }
-    </style>
-        <form action="" type="POST">
-            <table>
-                <tr>
-                    <th colspan="4" >Red Team</th><th colspan="4">Blue Team</th>
-                </tr>
-                <tr>
-                    <td>ID</td><td>First Name</td><td>Last Name</td><td>Codename</td>
-                    <td>ID</td><td>First Name</td><td>Last Name</td><td>Codename</td>
-                </tr>
-                <tr>
-                    <td><input type="number"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-                    <td><input type="number"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-                </tr>
-            </table>
-            <br>
-            <div style="width: 10&; margin-left: 45%">
-                <input type="button" name="submit" value="Save Teams">
-            </div>
-        </form>
+
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                padding: 5px;
+            }
+        </style>
         
-
-        <br>
-        <br>
-
         <form action="" type="POST">
-            <table>
-                {%for form in formset%}
-                <tr>
-                    <td>
-                        {{form.id}}
-                    </td>
-                    <td>
-                        {{form.first_name}}
-                    </td>
-                    <td>
-                        {{form.last_name}}
-                    </td>
-                    <td>
-                        {{form.codename}}
-                    </td>
-                </tr>
-                {%endfor%}
-            </table>
-            <input type="button" name="submit" value="Store Teams">
+            <div style="display: inline-block">
+                <table>
+                    <tr>
+                        <th colspan="4" >Red Team</th>
+                    </tr>
+                    <tr>
+                        <td>ID</td><td>First Name</td><td>Last Name</td><td>Codename</td>
+                    </tr>
+                    {%for form in red_player_formset%}
+                    <tr>
+                        <td>
+                            {{form.id}}
+                        </td>
+                        <td>
+                            {{form.first_name}}
+                        </td>
+                        <td>
+                            {{form.last_name}}
+                        </td>
+                        <td>
+                            {{form.codename}}
+                        </td>
+                    </tr>
+                    {%endfor%}
+                </table>
+            </div>
+            <div style="display: inline-block">
+                <table>
+                    <tr>
+                        <th colspan="4" >Blue Team</th>
+                    </tr>
+                    <tr>
+                        <td>ID</td><td>First Name</td><td>Last Name</td><td>Codename</td>
+                    </tr>
+                    {%for form in blue_player_formset%}
+                    <tr>
+                        <td>
+                            {{form.id}}
+                        </td>
+                        <td>
+                            {{form.first_name}}
+                        </td>
+                        <td>
+                            {{form.last_name}}
+                        </td>
+                        <td>
+                            {{form.codename}}
+                        </td>
+                    </tr>
+                    {%endfor%}
+                </table>
+            </div>
+            <br>
+            <input style="float: none" type="button" name="submit" value="Store Teams">
         </form>
         
         
