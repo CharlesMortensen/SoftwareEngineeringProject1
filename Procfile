@@ -1,1 +1,1 @@
-web: python3 lasertag/manage.py runserver
+web: gunicorn lasertag.wsgi:application
