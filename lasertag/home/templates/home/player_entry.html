@@ -1,6 +1,11 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <title>LaserTag Project</title>
+        {%if title%}
+            <title>LaserTag Project - {{title}}</title>
+        {%else%}
+            <title>LaserTag Project</title>
+        {%endif%}
     </head>
     <body>
     
