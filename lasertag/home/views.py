@@ -5,4 +5,4 @@ def index(request):
     return render(request, 'home/index.html')
     
 def player_entry(request):
-    return render(request, 'home/player_entry', {'title': 'Player Entry'})
+    return render(request, 'home/player_entry.html', {'title': 'Player Entry'})
