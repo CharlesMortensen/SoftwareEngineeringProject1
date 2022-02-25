@@ -36,8 +36,31 @@
             </div>
         </form>
         
-        
-        
+
+        <br>
+        <br>
+
+        <form action="" type="POST">
+            <table>
+                {%for form in formset%}
+                <tr>
+                    <td>
+                        {{form.id}}
+                    </td>
+                    <td>
+                        {{form.first_name}}
+                    </td>
+                    <td>
+                        {{form.last_name}}
+                    </td>
+                    <td>
+                        {{form.codename}}
+                    </td>
+                </tr>
+                {%endfor%}
+            </table>
+            <input type="button" name="submit" value="Store Teams">
+        </form>
         
         
         
