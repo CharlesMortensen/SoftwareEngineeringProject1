@@ -1,1 +1,1 @@
-web: gunicorn lasertag.wsgi
+web: gunicorn lasertag.wsgi:application
