@@ -13,8 +13,8 @@ def player_entry(request):
     RedPlayerFormSet = formset_factory(PlayerForm, extra=19)
     BluePlayerFormSet = formset_factory(PlayerForm, extra=19)
     #manage_data with these params is required for each
-    manage_data_red = { 'red-TOTAL_FORMS': '20', 'red-INITIAL_FORMS': '0',}
-    manage_data_blue = { 'blue-TOTAL_FORMS': '20', 'blue-INITIAL_FORMS': '0',}
+    manage_data_red = { 'red-TOTAL_FORMS': '15', 'red-INITIAL_FORMS': '0',}
+    manage_data_blue = { 'blue-TOTAL_FORMS': '15', 'blue-INITIAL_FORMS': '0',}
     red_player_formset = RedPlayerFormSet(manage_data_red, prefix="red")
     blue_player_formset = BluePlayerFormSet(manage_data_blue, prefix="blue")
 
