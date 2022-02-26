@@ -14,4 +14,10 @@ def player_entry(request):
     red_player_formset = RedPlayerFormSet(prefix="red")
     blue_player_formset = BluePlayerFormSet(prefix="blue")
 
+    if request.method == 'POST':
+        post_formset = RedPlayerFormSet(request.POST)
+        for form in post_formset:
+            print(form.save())
+
+
     return render(request, 'home/player_entry.html', {'title': 'Player Entry', 'red_player_formset': red_player_formset, 'blue_player_formset': blue_player_formset})
