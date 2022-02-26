@@ -34,9 +34,9 @@ def player_entry(request):
         # for both formsets need to loop through each form to save individual forms
         for form in post_formset_red:
             if form.is_valid() and form.cleaned_data: #form must be valid and non-empty before saving
-                print(form.save())
+                form.save()
         for form in post_formset_blue:
             if form.is_valid() and form.cleaned_data: #form must be valid and non-empty before saving
-                print(form.save())
+                form.save()
 
     return render(request, 'home/player_entry.html', {'title': 'Player Entry', 'red_player_formset': red_player_formset, 'blue_player_formset': blue_player_formset})
