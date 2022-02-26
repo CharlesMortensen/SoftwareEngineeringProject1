@@ -28,6 +28,7 @@
                     <tr>
                         <td>ID</td><td>First Name</td><td>Last Name</td><td>Codename</td>
                     </tr>
+                    {{ red_player_formset.management_form }}
                     {%for form in red_player_formset%}
                     <tr>
                         <td>
@@ -54,6 +55,7 @@
                     <tr>
                         <td>ID</td><td>First Name</td><td>Last Name</td><td>Codename</td>
                     </tr>
+                    {{ blue_player_formset.management_form }}
                     {%for form in blue_player_formset%}
                     <tr>
                         <td>
