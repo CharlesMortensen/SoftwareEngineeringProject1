@@ -26,16 +26,16 @@ def player_entry(request):
             elif "blue-" in key:
                 post_data_blue[key] = (request.POST)[key]
         # make a formset for the 2 forms. must pass them the right prefix so that it knows to take it off for the save()
-        post_formset_red = RedPlayerFormSet(post_data_red, prefix="red")
-        post_formset_blue = BluePlayerFormSet(post_data_blue, prefix="blue")
+        red_player_formset = RedPlayerFormSet(post_data_red, prefix="red")
+        blue_player_formset = BluePlayerFormSet(post_data_blue, prefix="blue")
         # must validate data otherwise it won't clean it and create the cleaned_data member for save()
-        post_formset_red.is_valid()
-        post_formset_blue.is_valid()
+        red_player_formset.is_valid()
+        blue_player_formset.is_valid()
         # for both formsets need to loop through each form to save individual forms
-        for form in post_formset_red:
+        for form in red_player_formset:
             if form.is_valid() and form.cleaned_data: #form must be valid and non-empty before saving
                 form.save()
-        for form in post_formset_blue:
+        for form in blue_player_formset:
             if form.is_valid() and form.cleaned_data: #form must be valid and non-empty before saving
                 form.save()
 
