@@ -8,6 +8,8 @@ def index(request):
     
 def player_entry(request):
 
+    context = {}
+
     RedPlayerFormSet = formset_factory(PlayerForm, extra=19)
     BluePlayerFormSet = formset_factory(PlayerForm, extra=19)
     #manage_data with these params is required for each
@@ -42,4 +44,11 @@ def player_entry(request):
                 form.save()
         players_saved = True
 
-    return render(request, 'home/player_entry.html', {'title': 'Player Entry', 'red_player_formset': red_player_formset, 'blue_player_formset': blue_player_formset, 'players_saved': players_saved})
+    context = {
+        'title': 'Player Entry',
+        'red_player_formset': red_player_formset,
+        'blue_player_formset': blue_player_formset,
+        'players_saved': players_saved
+    }
+
+    return render(request, 'home/player_entry.html', context)
