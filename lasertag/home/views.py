@@ -16,6 +16,8 @@ def player_entry(request):
     red_player_formset = RedPlayerFormSet(manage_data_red, prefix="red")
     blue_player_formset = BluePlayerFormSet(manage_data_blue, prefix="blue")
 
+    players_saved = False
+
     if request.method == 'POST':
         # separate the red form data from the blue form data
         post_data_red = {}
@@ -38,5 +40,6 @@ def player_entry(request):
         for form in blue_player_formset:
             if form.is_valid() and form.cleaned_data: #form must be valid and non-empty before saving
                 form.save()
+        players_saved = True
 
-    return render(request, 'home/player_entry.html', {'title': 'Player Entry', 'red_player_formset': red_player_formset, 'blue_player_formset': blue_player_formset})
+    return render(request, 'home/player_entry.html', {'title': 'Player Entry', 'red_player_formset': red_player_formset, 'blue_player_formset': blue_player_formset, 'players_saved': players_saved})
