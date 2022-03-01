@@ -1,0 +1,1 @@
+web: cd lasertag && gunicorn lasertag.wsgi
