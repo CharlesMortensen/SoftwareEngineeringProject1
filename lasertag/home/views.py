@@ -52,3 +52,16 @@ def player_entry(request):
     }
 
     return render(request, 'home/player_entry.html', context)
+    
+def game_action(request):
+    
+    context = {}
+
+    # make a list of all the players for each team
+    
+
+    context = {
+        'title': 'Game Action',
+        }
+    
+    return render(request, 'home/game_action.html', context)

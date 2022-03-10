@@ -12,3 +12,8 @@ class Player(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+# class ActiveGame(models.Model):
+    # id
+    # codename
+    # team

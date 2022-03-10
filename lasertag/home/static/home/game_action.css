@@ -1,0 +1,42 @@
+#topHalf {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 50%;
+    overflow: auto;
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 10px;
+    border: 4px solid black;
+}
+
+#bottomHalf {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    text-align:left;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    border: 4px solid black;
+}
+
+#redHeading {
+    font-size: 56px;
+    padding-right: 32px;
+    color: Crimson;
+}
+
+#blueHeading {
+    font-size: 56px;
+    padding-right: 32px;
+    color: MediumBlue;
+}
+
+td{
+    font-size: 32px;
+}
