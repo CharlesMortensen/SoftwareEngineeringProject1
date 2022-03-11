@@ -56,6 +56,11 @@
     color: MediumBlue;
 }
 
+.playerTable {
+    display: inline-block;
+    vertical-align: top;
+}
+
 #warning_timer {
     visibility: hidden;
     width: 50%;
