@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .forms import PlayerForm
 from django.forms import formset_factory
+from home.models import ActivePlayer, Player
 
 def index(request):
     return render(request, 'home/index.html')
@@ -62,6 +63,8 @@ def game_action(request):
 
     context = {
         'title': 'Game Action',
+        'red_team': ActivePlayer.objects.filter(team="RED"),
+        'blue_team': ActivePlayer.objects.filter(team="Blue"),
         }
     
     return render(request, 'home/game_action.html', context)

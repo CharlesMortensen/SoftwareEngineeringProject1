@@ -11,56 +11,30 @@
     </head>
     <body>
         <div id="topHalf">
-            <table align="center">
-                <tr>
-                    <th id="redHeading">Red Team</th>
-                    <th id="blueHeading">Blue Team</th>
-                </tr>
-                <tr>
-                    <td>Red data here</td>
-                    <td>Blue data here</td>
-                </tr>
-                <tr>
-                    <td>Red data here</td>
-                    <td>Blue data here</td>
-                </tr>
-                <tr>
-                    <td>Red data here</td>
-                    <td>Blue data here</td>
-                </tr>
-                <tr>
-                    <td>Red data here</td>
-                    <td>Blue data here</td>
-                </tr>
-                <tr>
-                    <td>Red data here</td>
-                    <td>Blue data here</td>
-                </tr>
-                <tr>
-                    <td>Red data here</td>
-                    <td>Blue data here</td>
-                </tr>
-                <tr>
-                    <td>Red data here</td>
-                    <td>Blue data here</td>
-                </tr>
-                <tr>
-                    <td>Red data here</td>
-                    <td>Blue data here</td>
-                </tr>
-                <tr>
-                    <td>Red data here</td>
-                    <td>Blue data here</td>
-                </tr>
-                <tr>
-                    <td>Red data here</td>
-                    <td>Blue data here</td>
-                </tr>
-                <tr>
-                    <td>Red data here</td>
-                    <td>Blue data here</td>
-                </tr>
-            </table>
+            <div style="display: inline-block">
+                <table align="center">
+                    <tr>
+                        <th id="redHeading">Red Team</th>
+                    </tr>
+                    {% for red_player in red_team %}
+                        <tr>
+                            <td>{{red_player.player_info.id}} | {{red_player.player_info.codename}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div style="display: inline-block">
+                <table align="center">
+                    <tr>
+                        <th id="blueHeading">Blue Team</th>
+                    </tr>
+                    {% for blue_player in blue_team %}
+                        <tr>
+                            <td>{{blue_player.player_info.id}} | {{blue_player.player_info.codename}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
         <div id="bottomHalf">
             <h1>Combat record </h1>
