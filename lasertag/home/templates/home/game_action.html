@@ -38,6 +38,13 @@
         </div>
         <div id="bottomHalf">
             <h1>Combat record </h1>
+            <div id="timerBox">
+                <input type="button" onclick='start_count()' value="Start Game">
+                <input type="button" onclick='reset_count()' value="Stop Game">
+                <h1 id="timer"></h1>
+            </div>
         </div>
+            
+        <script src="{%static 'home/game_action.js'%}"></script>
     </body>
 </html>

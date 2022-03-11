@@ -64,7 +64,7 @@ def game_action(request):
     context = {
         'title': 'Game Action',
         'red_team': ActivePlayer.objects.filter(team="RED"),
-        'blue_team': ActivePlayer.objects.filter(team="Blue"),
+        'blue_team': ActivePlayer.objects.filter(team="BLUE"),
         }
     
     return render(request, 'home/game_action.html', context)
