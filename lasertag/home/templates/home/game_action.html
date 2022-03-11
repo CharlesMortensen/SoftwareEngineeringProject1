@@ -38,13 +38,18 @@
         </div>
         <div id="bottomHalf">
             <h1>Combat record </h1>
-            <div id="timerBox">
-                <input type="button" onclick='start_count()' value="Start Game">
-                <input type="button" onclick='reset_count()' value="Stop Game">
-                <h1 id="timer"></h1>
-            </div>
         </div>
-            
+        
+        <div id="timerBox">
+            <div class="timerButtons">
+                <button onclick='start_warning()' class="timerButtons">Start Game</button>
+                <button onclick='reset_timer()' class="timerButtons">Stop Game</button>
+                <br><br>
+            </div>
+            <div id="timer" class="timerButtons">00:00</div>
+         </div>
+         <div id="warning_timer">0</div>
+         
         <script src="{%static 'home/game_action.js'%}"></script>
     </body>
 </html>
