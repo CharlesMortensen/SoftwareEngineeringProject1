@@ -20,7 +20,7 @@ class ActivePlayer(models.Model):
         (BLUE, "Blue"),
     ]
 
-    player_info = models.ForeignKey("Player", on_delete=models.CASCADE)
+    player_info = models.OneToOneField("Player", on_delete=models.CASCADE)
     team = models.CharField(max_length=4, choices=TEAM_CHOICES)
 
     def __str__(self):
