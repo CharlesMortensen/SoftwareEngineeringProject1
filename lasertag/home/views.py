@@ -52,6 +52,7 @@ def player_entry(request):
             if form.is_valid() and form.cleaned_data: #form must be valid and non-empty before saving
                 form.save()
         # adds posted players to active player table
+        ActivePlayer.objects.all().delete()
         for id in active_data:
             if active_data[id] == "RED":
                 player = Player.objects.get(pk = id)
