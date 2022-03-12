@@ -31,12 +31,12 @@ def player_entry(request):
             if "red-" in key:
                 post_data_red[key] = post[key]
                 # assigns player id to red
-                if "-id" in key and post[key] != "":
+                if "-id" in key and post[key] != "" and post[key] not in active_data:
                     active_data[post[key]] = "RED"
             elif "blue-" in key:
                 post_data_blue[key] = post[key]
                 # assigns player id to blue
-                if "-id" in key and post[key] != "":
+                if "-id" in key and post[key] != "" and post[key] not in active_data:
                     active_data[post[key]] = "BLUE"
         # make a formset for the 2 forms. must pass them the right prefix so that it knows to take it off for the save()
         red_player_formset = RedPlayerFormSet(post_data_red, prefix="red")
