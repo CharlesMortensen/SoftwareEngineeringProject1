@@ -94,7 +94,10 @@
             <br>
             <input style="float: none" type="submit" name="submit" value="Store Teams">
             {%if players_saved%}
-                <br><p>Players Saved</p>
+                <br>
+                <div class="alert alert-success">
+                    <strong>Players successfully saved!</strong> You can go to the <a href="{%url 'game_action'%}" class="alert-link">Game Action screen.</a>.
+                  </div>
             {%endif%}
         </form>
         
