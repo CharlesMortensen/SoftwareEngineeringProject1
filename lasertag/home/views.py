@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .forms import PlayerForm
 from django.forms import formset_factory
+from home.models import ActivePlayer, Player
 
 def index(request):
     return render(request, 'home/index.html')
@@ -21,14 +22,22 @@ def player_entry(request):
     players_saved = False
 
     if request.method == 'POST':
+        post = request.POST
         # separate the red form data from the blue form data
         post_data_red = {}
         post_data_blue = {}
-        for key in request.POST:
+        active_data = {}
+        for key in post:
             if "red-" in key:
-                post_data_red[key] = (request.POST)[key]
+                post_data_red[key] = post[key]
+                # assigns player id to red
+                if "-id" in key and post[key] != "" and post[key] not in active_data:
+                    active_data[post[key]] = "RED"
             elif "blue-" in key:
-                post_data_blue[key] = (request.POST)[key]
+                post_data_blue[key] = post[key]
+                # assigns player id to blue
+                if "-id" in key and post[key] != "" and post[key] not in active_data:
+                    active_data[post[key]] = "BLUE"
         # make a formset for the 2 forms. must pass them the right prefix so that it knows to take it off for the save()
         red_player_formset = RedPlayerFormSet(post_data_red, prefix="red")
         blue_player_formset = BluePlayerFormSet(post_data_blue, prefix="blue")
@@ -42,6 +51,15 @@ def player_entry(request):
         for form in blue_player_formset:
             if form.is_valid() and form.cleaned_data: #form must be valid and non-empty before saving
                 form.save()
+        # adds posted players to active player table
+        ActivePlayer.objects.all().delete()
+        for id in active_data:
+            if active_data[id] == "RED":
+                player = Player.objects.get(pk = id)
+                ActivePlayer.objects.create(player_info = player,team = "RED")
+            else:
+                player = Player.objects.get(pk = id)
+                ActivePlayer.objects.create(player_info = player,team = "BLUE")
         players_saved = True
 
     context = {
@@ -52,3 +70,18 @@ def player_entry(request):
     }
 
     return render(request, 'home/player_entry.html', context)
+    
+def game_action(request):
+    
+    context = {}
+
+    # make a list of all the players for each team
+    
+
+    context = {
+        'title': 'Game Action',
+        'red_team': ActivePlayer.objects.filter(team="RED"),
+        'blue_team': ActivePlayer.objects.filter(team="BLUE"),
+        }
+    
+    return render(request, 'home/game_action.html', context)
