@@ -6,6 +6,10 @@ To install, clone the repository and install the python dependencies listed in t
 
 > pip install -r requirements.txt
 
+Next, you will need to set up a local database for the application. Run the following command in the lasertag folder (the one containing manage.py):
+
+> python manage.py migrate
+
 Once this is done, the server can be started locally by running the following command in the lasertag folder:
 
 > python manage.py runserver
