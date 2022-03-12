@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_bootstrap5',
 	'home.apps.HomeConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -71,6 +72,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'lasertag.wsgi.application'
 
+BOOTSTRAP5 = {
+    "css_url": {
+        "url": "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css",
+        "integrity": "sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3",
+        "crossorigin": "anonymous",
+    },
+    "javascript_url": {
+        "url": "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js",
+        "integrity": "sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p",
+        "crossorigin": "anonymous",
+    },
+    'server_side_validation': False
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
