@@ -40,6 +40,13 @@
             </div>  
         </nav>
 
+        {%if players_saved%}
+                <br>
+                <div class="alert alert-success">
+                    <strong>Players successfully saved!</strong> You can go to the <a href="{%url 'game_action'%}" class="alert-link">Game Action screen.</a>.
+                  </div>
+        {%endif%}
+
         <form action="/player_entry" method="POST">
             {% csrf_token %}
             <div class="container">
@@ -103,12 +110,6 @@
                     <input style="float: none" type="submit" name="submit" value="Store Teams">
                 </div>
             </div>
-            {%if players_saved%}
-                <br>
-                <div class="alert alert-success">
-                    <strong>Players successfully saved!</strong> You can go to the <a href="{%url 'game_action'%}" class="alert-link">Game Action screen.</a>.
-                  </div>
-            {%endif%}
         </form>
         
         
