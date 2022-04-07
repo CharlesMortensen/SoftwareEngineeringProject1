@@ -72,16 +72,11 @@ def player_entry(request):
     return render(request, 'home/player_entry.html', context)
     
 def game_action(request):
-    
-    context = {}
-
     # make a list of all the players for each team
-    
-
     context = {
         'title': 'Game Action',
         'red_team': ActivePlayer.objects.filter(team="RED"),
         'blue_team': ActivePlayer.objects.filter(team="BLUE"),
-        }
+    }
     
     return render(request, 'home/game_action.html', context)
