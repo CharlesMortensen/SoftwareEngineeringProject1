@@ -32,11 +32,14 @@
             <div class="playerTable">
                 <table align="center">
                     <tr>
-                        <th id="redHeading">Red Team</th>
+                        <th id="redHeading" colspan="2">Red Team</th>
+                    </tr>
+                    <tr>
+                        <td>Player</td><td>Pts.</td>
                     </tr>
                     {% for red_player in red_team %}
                         <tr>
-                            <td>{{red_player.player_info.id}} | {{red_player.player_info.codename}}</td>
+                            <td>{{red_player.player_info.id}} | {{red_player.player_info.codename}}</td><td><div id="red_pts_{{red_player.player_info.id}}">0</div></td>
                         </tr>
                     {% endfor %}
                 </table>
@@ -44,11 +47,14 @@
             <div class="playerTable">
                 <table align="center">
                     <tr>
-                        <th id="blueHeading">Blue Team</th>
+                        <th id="blueHeading" colspan="2">Blue Team</th>
+                    </tr>
+                    <tr>
+                        <td>Player</td><td>Pts.</td>
                     </tr>
                     {% for blue_player in blue_team %}
                         <tr>
-                            <td>{{blue_player.player_info.id}} | {{blue_player.player_info.codename}}</td>
+                            <td>{{blue_player.player_info.id}} | {{blue_player.player_info.codename}}</td><td><div id="red_pts_{{blue_player.player_info.id}}">0</div></td>
                         </tr>
                     {% endfor %}
                 </table>
