@@ -40,70 +40,67 @@
             </div>  
         </nav>
 
-        {%if players_saved%}
-                <br>
-                <div class="alert alert-success">
-                    <strong>Players successfully saved!</strong> You can go to the <a href="{%url 'game_action'%}" class="alert-link">Game Action screen.</a>.
-                  </div>
-        {%endif%}
-
         <form action="/player_entry" method="POST">
             {% csrf_token %}
-            <div class="container">
+            <div class="container" style="color: black">
                 <div class="row">
-                    <div class="col-6">
-                        <div class="container border border-dark">
-                            <div class="row">
-                                <div class="col"><h1>Red Team</h1></div>
-                            </div>
-                            <div class="row m-0">
-                                <div class="col p-0">ID</div><div class="col p-0">First Name</div><div class="col p-0">Last Name</div><div class="col p-0">Codename</div>
-                            </div>
-                            {{ red_player_formset.management_form }}
-                            {%for form in red_player_formset%}
-                            <div class="row p-0 m-0">
-                                <div class="col p-0">
-                                    {%bootstrap_field form.id show_label=skip placeholder=''%}
-                                </div>
-                                <div class="col p-0">
-                                    {%bootstrap_field form.first_name show_label=skip placeholder=''%}
-                                </div>
-                                <div class="col p-0">
-                                    {%bootstrap_field form.last_name show_label=skip placeholder=''%}
-                                </div>
-                                <div class="col p-0">
-                                    {%bootstrap_field form.codename show_label=skip placeholder=''%}
-                                </div>
-                            </div>
-                            {%endfor%}
+                    {%if players_saved%}
+                        <br>
+                        <div class="alert alert-success">
+                            <strong>Players successfully saved!</strong> You can go to the <a href="{%url 'game_action'%}" class="alert-link">Game Action screen.</a>.
                         </div>
+                    {%endif%}
+                </div>
+                <div class="row">
+                    <div class="col-6" style="background-color: #f24a39">
+                        <div class="row">
+                            <div class="col"><h1>Red Team</h1></div>
+                        </div>
+                        <div class="row m-0">
+                            <div class="col p-0">ID</div><div class="col p-0">First Name</div><div class="col p-0">Last Name</div><div class="col p-0">Codename</div>
+                        </div>
+                        {{ red_player_formset.management_form }}
+                        {%for form in red_player_formset%}
+                        <div class="row p-0 m-0">
+                            <div class="col p-0">
+                                {%bootstrap_field form.id show_label=skip placeholder=''%}
+                            </div>
+                            <div class="col p-0">
+                                {%bootstrap_field form.first_name show_label=skip placeholder=''%}
+                            </div>
+                            <div class="col p-0">
+                                {%bootstrap_field form.last_name show_label=skip placeholder=''%}
+                            </div>
+                            <div class="col p-0">
+                                {%bootstrap_field form.codename show_label=skip placeholder=''%}
+                            </div>
+                        </div>
+                        {%endfor%}
                     </div>
-                    <div class="col-6">
-                        <div class="container border border-dark">
-                            <div class="row">
-                                <div class="col"><h1>Blue Team</h1></div>
-                            </div>
-                            <div class="row m-0">
-                                <div class="col p-0">ID</div><div class="col p-0">First Name</div><div class="col p-0">Last Name</div><div class="col p-0">Codename</div>
-                            </div>
-                            {{ blue_player_formset.management_form }}
-                            {%for form in blue_player_formset%}
-                            <div class="row p-0 m-0">
-                                <div class="col p-0">
-                                    {%bootstrap_field form.id show_label=skip placeholder=''%}
-                                </div>
-                                <div class="col p-0">
-                                    {%bootstrap_field form.first_name show_label=skip placeholder=''%}
-                                </div>
-                                <div class="col p-0">
-                                    {%bootstrap_field form.last_name show_label=skip placeholder=''%}
-                                </div>
-                                <div class="col p-0">
-                                    {%bootstrap_field form.codename show_label=skip placeholder=''%}
-                                </div>
-                            </div>
-                            {%endfor%}
+                    <div class="col-6" style="background-color: #4b9ce4">
+                        <div class="row">
+                            <div class="col"><h1>Blue Team</h1></div>
                         </div>
+                        <div class="row m-0">
+                            <div class="col p-0">ID</div><div class="col p-0">First Name</div><div class="col p-0">Last Name</div><div class="col p-0">Codename</div>
+                        </div>
+                        {{ blue_player_formset.management_form }}
+                        {%for form in blue_player_formset%}
+                        <div class="row p-0 m-0">
+                            <div class="col p-0">
+                                {%bootstrap_field form.id show_label=skip placeholder=''%}
+                            </div>
+                            <div class="col p-0">
+                                {%bootstrap_field form.first_name show_label=skip placeholder=''%}
+                            </div>
+                            <div class="col p-0">
+                                {%bootstrap_field form.last_name show_label=skip placeholder=''%}
+                            </div>
+                            <div class="col p-0">
+                                {%bootstrap_field form.codename show_label=skip placeholder=''%}
+                            </div>
+                        </div>
+                        {%endfor%}
                     </div>
                 </div>
                 <div class="row">
