@@ -20,6 +20,8 @@ class LasergunConsumer(WebsocketConsumer):
             return
         active1 = ActivePlayer.objects.get(player_info=Player(pk=active1))
         active2 = ActivePlayer.objects.get(player_info=Player(pk=active2))
+        active1.points += 1
+        active1.save()
         message = LaserTagMessage(player1=active1, player2=active2)
         message.save()
 
