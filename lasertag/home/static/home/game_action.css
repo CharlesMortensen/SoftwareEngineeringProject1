@@ -53,12 +53,9 @@ td{
     font-size: 32px;
 }
 
-.my-custom-scrollbar {
-    position: relative;
-    height: auto;
-    overflow: auto;
-    }
-
-.table-wrapper-scroll-y {
-    display: block;
-    }
+#content{
+    margin-top:60px;
+    margin-left:10px;
+    margin-right:10px;
+    height:calc(100vh - 60px);
+}

@@ -39,54 +39,50 @@
         height division between timer and the combat record. (this is bordered purely as a debugging tool and can be 
         removed later.)-->
         <div class="container-fluid">
-            <div class="row" style="margin-top:60px;margin-left:10px;margin-right:10px">
+            <div id="content" class="row">
                 <!--Red team col, it inlcudes the table that will be written systematically -->
-                <div class="col-md-4 h-100">
-                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th id="redHeading" colspan="2">Red Team</th>
-                                </tr>
-                            </thead>
-                            <thead class="table-dark">
-                                <tr>
-                                    <td>ID</td><td>Player</td><td>Pts.</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for red_player in red_team %}
-                                <tr>
-                                    <td>{{red_player.player_info.id}}</td><td>{{red_player.player_info.codename}}</td><td><div id="red_pts_{{red_player.player_info.id}}">0</div></td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="col-md-4 h-100 overflow-scroll">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th id="redHeading" colspan="2">Red Team</th>
+                            </tr>
+                        </thead>
+                        <thead class="table-dark">
+                            <tr>
+                                <td>ID</td><td>Player</td><td>Pts.</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for red_player in red_team %}
+                            <tr>
+                                <td>{{red_player.player_info.id}}</td><td>{{red_player.player_info.codename}}</td><td>{{red_player.points}}</div></td> <!-- Points only update on refresh -->
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
                 <!--Blue team col, includes table to be written systematically -->
-                <div class="col-md-4 h-100">
-                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th id="blueHeading" colspan="2">Blue Team</th>
-                                </tr>
-                            </thead>
-                            <thead class="table-dark">
-                                <tr>
-                                    <td>ID</td><td>Player</td><td>Pts.</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for blue_player in blue_team %}
-                                <tr>
-                                    <td>{{blue_player.player_info.id}}</td><td>{{blue_player.player_info.codename}}</td><td><div id="blue_pts_{{blue_player.player_info.id}}">0</div></td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="col-md-4 h-100 overflow-scroll">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th id="blueHeading" colspan="2">Blue Team</th>
+                            </tr>
+                        </thead>
+                        <thead class="table-dark">
+                            <tr>
+                                <td>ID</td><td>Player</td><td>Pts.</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for blue_player in blue_team %}
+                            <tr>
+                                <td>{{blue_player.player_info.id}}</td><td>{{blue_player.player_info.codename}}</td><td>{{blue_player.points}}</div></td> <!-- Points only update on refresh -->
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
                 <!--Timer and combat record col, turned buttons into buttons, the timer works fine from what Charles can
                 tell. Getting the heights of all this sorted out is going to be a challenge-->
