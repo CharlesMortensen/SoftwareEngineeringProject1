@@ -36,9 +36,9 @@ socket.connect(f"ws://{args.domain}/ws/guns/")
 
 # Counter for number of events, with random player and order
 for _ in range(counter):
-    redplayer = red1 if random.choice([True, False]) else red2
-    greenplayer = green1 if random.choice([True, False]) else green2
-    message = f"{redplayer}:{greenplayer}" if random.choice([True, False]) else f"{greenplayer}:{redplayer}"
+    redplayer = random.choice([red1, red2])
+    greenplayer = random.choice([green1, green2])
+    message = random.choice([f"{redplayer}:{greenplayer}", f"{greenplayer}:{redplayer}"]) 
 
     print(message)
     socket.send(message)
