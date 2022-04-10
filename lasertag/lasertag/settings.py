@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels'
 ]
 
 MIDDLEWARE = [
@@ -71,6 +72,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'lasertag.wsgi.application'
+ASGI_APPLICATION = 'lasertag.asgi.application'
 
 BOOTSTRAP5 = {
     "css_url": {
