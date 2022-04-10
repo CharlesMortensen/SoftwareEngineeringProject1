@@ -52,3 +52,10 @@
 td{
     font-size: 32px;
 }
+
+#content{
+    margin-top:60px;
+    margin-left:10px;
+    margin-right:10px;
+    height:calc(100vh - 60px);
+}
