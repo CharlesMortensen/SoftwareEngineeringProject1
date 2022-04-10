@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {%load django_bootstrap5%}
 <html>
+    <!--Head, title, and loading neccesary components-->
     <head>
     {%if title%}
             <title>LaserTag Project - {{title}}</title>
@@ -11,12 +12,14 @@
     {%bootstrap_css%}
     <link rel="stylesheet" type="text/css" href="{%static "home/game_action.css"%}">
     </head>
+    
     <body>
+    <!-- Navbar stuff -->
         <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{%url 'index'%}">Photon</a>
                 <div class="container-fluid">
-                    <!-- Links -->
+                    <!-- Links (this comment was here before Charles was, no clue what it means-->
                     <ul class="navbar-nav">
                       <li class="nav-item">
                         <a class="nav-link" href="{%url 'player_entry'%}">Player Entry</a>
@@ -28,52 +31,90 @@
                   </div>
             </div>  
         </nav>
-        <div id="leftHalf">
-            <div class="playerTable">
-                <table align="center">
-                    <tr>
-                        <th id="redHeading" colspan="2">Red Team</th>
-                    </tr>
-                    <tr>
-                        <td>Player</td><td>Pts.</td>
-                    </tr>
-                    {% for red_player in red_team %}
-                        <tr>
-                            <td>{{red_player.player_info.id}} | {{red_player.player_info.codename}}</td><td><div id="red_pts_{{red_player.player_info.id}}">0</div></td>
-                        </tr>
-                    {% endfor %}
-                </table>
+        
+        <!-- This row will be split into 3 cols, red team, blue team, and timer plus combat record.
+        It constitutes all of the page that isn't the navbar, getting the height of this row correct in such a manner
+        that it compensates for the height of the navbar that eludes Charles, Charles has an idea or two he hasn't
+        tried yet. This is important because it will affec the height of everything else inside of it, namely the
+        height division between timer and the combat record. (this is bordered purely as a debugging tool and can be 
+        removed later.)-->
+        <div class="container-fluid">
+            <div class="row" style="margin-top:60px;margin-left:10px;margin-right:10px">
+                <!--Red team col, it inlcudes the table that will be written systematically -->
+                <div class="col-md-4 h-100">
+                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th id="redHeading" colspan="2">Red Team</th>
+                                </tr>
+                            </thead>
+                            <thead class="table-dark">
+                                <tr>
+                                    <td>ID</td><td>Player</td><td>Pts.</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for red_player in red_team %}
+                                <tr>
+                                    <td>{{red_player.player_info.id}}</td><td>{{red_player.player_info.codename}}</td><td><div id="red_pts_{{red_player.player_info.id}}">0</div></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--Blue team col, includes table to be written systematically -->
+                <div class="col-md-4 h-100">
+                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th id="blueHeading" colspan="2">Blue Team</th>
+                                </tr>
+                            </thead>
+                            <thead class="table-dark">
+                                <tr>
+                                    <td>ID</td><td>Player</td><td>Pts.</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for blue_player in blue_team %}
+                                <tr>
+                                    <td>{{blue_player.player_info.id}}</td><td>{{blue_player.player_info.codename}}</td><td><div id="blue_pts_{{blue_player.player_info.id}}">0</div></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--Timer and combat record col, turned buttons into buttons, the timer works fine from what Charles can
+                tell. Getting the heights of all this sorted out is going to be a challenge-->
+                <div class="col-md-4 border border-4 border-dark h-100">
+                    <!--Timer buttons -->
+                    <div class="row">
+                        <button type="button" class="btn btn-success active" onclick='start_warning()'>Start Game</button>
+                    </div>
+                    <div class="row">
+                        <button type="button" class="btn btn-danger active"onclick='reset_timer()'>Stop Game</button>
+                    </div>
+                    <!--Timer itself -->
+                    <div class="row">
+                        <div id="timer" align="center">00:00</div>
+                    </div>
+                    <hr>
+                    <!--Start of combat record -->
+                    <div class="row">
+                        <h1 style="text-align: center;">Combat Record</h1>
+                    </div>
+                </div>
             </div>
-            <div class="playerTable">
-                <table align="center">
-                    <tr>
-                        <th id="blueHeading" colspan="2">Blue Team</th>
-                    </tr>
-                    <tr>
-                        <td>Player</td><td>Pts.</td>
-                    </tr>
-                    {% for blue_player in blue_team %}
-                        <tr>
-                            <td>{{blue_player.player_info.id}} | {{blue_player.player_info.codename}}</td><td><div id="red_pts_{{blue_player.player_info.id}}">0</div></td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            </div>
-        </div>
-        <div id="rightHalf">
-            <h1>Combat Record </h1>
         </div>
         
-        <div id="timerBox">
-            <div class="timerButtons">
-                <button onclick='start_warning()' class="timerButtons">Start Game</button>
-                <button onclick='reset_timer()' class="timerButtons">Stop Game</button>
-                <br><br>
-            </div>
-            <div id="timer" class="timerButtons">00:00</div>
-         </div>
-         <div id="warning_timer">0</div>
-         
+        
+        <!--Charles didn't touch this bc he didn't know what it did. The warning timer is completely unchanged,
+        (and probably ugly, idk) Charles is open to try to fix that stuff later when we aren't on as much of a time crunch.-->
+        <div id="warning_timer">0</div>
         <script src="{%static 'home/game_action.js'%}"></script>
         {%bootstrap_javascript%}
     </body>
