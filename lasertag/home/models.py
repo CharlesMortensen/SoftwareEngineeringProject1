@@ -25,7 +25,7 @@ class ActivePlayer(models.Model):
     points = models.IntegerField(default=0)
 
     def __str__(self):
-        return f"{self.player_info.id}, {self.team}"
+        return self.player_info.codename
     
 class LaserTagMessage(models.Model):
     id = models.AutoField(primary_key=True)
