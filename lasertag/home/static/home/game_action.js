@@ -4,7 +4,19 @@ timer_running = false;
 warning_time = 10;
 warning_timer_running = false;
 const timer_display = document.getElementById("timer");
+const combat_log = document.getElementById("combatLog");
 const warning_timer_display = document.getElementById("warning_timer");
+const gameSocket = new WebSocket('ws://'+ window.location.host + '/ws/game/');
+
+gameSocket.onmessage = function(e) {
+    const data = JSON.parse(e.data);
+    let text = "";
+    for (const x in data["messages"]) {
+        combat_log.innerHTML = JSON.stringify(data["messages"][x]) + "<br>" + combat_log.innerHTML;
+    }
+    console.log(text);
+    //combat_log.innerHTML = data.messages + combat_log.innerHTML;
+}
 
 function start_warning(){
     if(warning_timer_running == false && timer_running == false){
@@ -28,6 +40,7 @@ function reset_timer(){
     }
     if(timer_running == true){
         time = 0;
+        combat_log.innerHTML = "";
         display_time();
     }
     
@@ -59,5 +72,6 @@ function display_time(){
         sec = time%60;
         timer_display.innerHTML = String(min).padStart(2,'0') + ":" + String(sec).padStart(2,'0');
         time -= 1;
+        gameSocket.send("a");
     }
 }

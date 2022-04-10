@@ -86,7 +86,7 @@
                 </div>
                 <!--Timer and combat record col, turned buttons into buttons, the timer works fine from what Charles can
                 tell. Getting the heights of all this sorted out is going to be a challenge-->
-                <div class="col-md-4 border border-4 border-dark h-100">
+                <div class="col-md-4 border border-4 border-dark h-100 overflow-scroll">
                     <!--Timer buttons -->
                     <div class="row">
                         <button type="button" class="btn btn-success active" onclick='start_warning()'>Start Game</button>
@@ -102,6 +102,7 @@
                     <!--Start of combat record -->
                     <div class="row">
                         <h1 style="text-align: center;">Combat Record</h1>
+                        <p id="combatLog" style="text-align: center;"></p>
                     </div>
                 </div>
             </div>
