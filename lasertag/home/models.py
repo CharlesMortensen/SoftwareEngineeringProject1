@@ -29,7 +29,7 @@ class ActivePlayer(models.Model):
     
 class LaserTagMessage(models.Model):
     id = models.AutoField(primary_key=True)
-    player1 = models.OneToOneField("ActivePlayer", related_name="player1_reference", on_delete=models.CASCADE)
-    player2 = models.OneToOneField("ActivePlayer", related_name="player2_reference", on_delete=models.CASCADE)
+    player1 = models.ForeignKey("ActivePlayer", related_name="player1_reference", on_delete=models.CASCADE)
+    player2 = models.ForeignKey("ActivePlayer", related_name="player2_reference", on_delete=models.CASCADE)
     message_isnew = models.BooleanField(default=True)
 

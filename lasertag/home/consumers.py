@@ -1,4 +1,6 @@
 from channels.generic.websocket import WebsocketConsumer
+from .models import LaserTagMessage, ActivePlayer, Player
+import re
 
 class LasergunConsumer(WebsocketConsumer):
     def connect(self):
@@ -8,5 +10,14 @@ class LasergunConsumer(WebsocketConsumer):
         pass
 
     def receive(self, text_data):
-        print("hello world")
-        self.send(text_data="hello world")
+        print(text_data)
+        players = re.findall(r'\d+', text_data)
+        if len(players) != 2:
+            return
+        active1, active2 = int(players[0]), int(players[1])
+        if not ActivePlayer.objects.filter(player_info=Player(pk=active1)).exists() or not ActivePlayer.objects.filter(player_info=Player(pk=active2)).exists():
+            return
+        active1 = ActivePlayer.objects.get(player_info=Player(pk=active1))
+        active2 = ActivePlayer.objects.get(player_info=Player(pk=active2))
+        message = LaserTagMessage(player1=active1, player2=active2)
+        message.save()
