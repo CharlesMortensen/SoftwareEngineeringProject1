@@ -51,7 +51,6 @@ function reset_timer(){
     if(timer_running == true){
         controlSocket.send("end");
         time = 0;
-        combat_log.innerHTML = "";
         display_time();
     }
     
@@ -79,6 +78,7 @@ function display_time(){
         warning_time -= 1;
     }else{
         if(time < 0){
+            combat_log.innerHTML = "";
             clearInterval(interval);
             time = 6*60;
             timer_running = false;
