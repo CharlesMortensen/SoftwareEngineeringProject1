@@ -59,6 +59,7 @@ function reset_timer(){
 }
 
 function display_time(){
+    score_blink();
     if(warning_timer_running == true){
         if(warning_time < 1){
             clearInterval(interval);
@@ -85,5 +86,34 @@ function display_time(){
         timer_display.innerHTML = String(min).padStart(2,'0') + ":" + String(sec).padStart(2,'0');
         time -= 1;
         gameSocket.send("a");
+    }
+}
+
+function score_blink(){
+    var red_score = document.getElementById("redPoints");
+    var blue_score = document.getElementById("bluePoints");
+    if(timer_running == true){
+        console.log(red_score.innerHTML);
+        if(parseInt(red_score.innerHTML) > parseInt(blue_score.innerHTML)){
+            red_score.classList.add("blink_text");
+            if (blue_score.classList.contains("blink_text")) {
+                blue_score.classList.remove("blink_text");
+            }
+        }else if(parseInt(red_score.innerHTML) < parseInt(blue_score.innerHTML)){
+            blue_score.classList.add("blink_text");
+            if (red_score.classList.contains("blink_text")) {
+                red_score.classList.remove("blink_text");
+            }
+        }else{
+            red_score.classList.add("blink_text");
+            blue_score.classList.add("blink_text");
+        }
+    }else{
+        if (red_score.classList.contains("blink_text")) {
+            red_score.classList.remove("blink_text");
+        }
+        if (blue_score.classList.contains("blink_text")) {
+            blue_score.classList.remove("blink_text");
+        }
     }
 }
