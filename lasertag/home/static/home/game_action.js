@@ -5,6 +5,8 @@ warning_time = 10;
 warning_timer_running = false;
 const timer_display = document.getElementById("timer");
 const combat_log = document.getElementById("combatLog");
+const redPoints = document.getElementById("redPoints");
+const bluePoints = document.getElementById("bluePoints");
 const warning_timer_display = document.getElementById("warning_timer");
 const gameSocket = new WebSocket('ws://' + window.location.host + '/ws/game/');
 const controlSocket = new WebSocket('ws://' + window.location.host + '/ws/control/');
@@ -19,6 +21,8 @@ gameSocket.onmessage = function(e) {
             playerScore.innerHTML = data.ids[id];
             //console.log(data.ids[id]);
         }
+        redPoints.innerHTML = data.redpoints;
+        bluePoints.innerHTML = data.bluepoints;
         //console.log(JSON.stringify(data["ids"]));
     }
 }
