@@ -1,7 +1,7 @@
 interval = 0;
-time = 5*60;
+time = 6*60;
 timer_running = false;
-warning_time = 10;
+warning_time = 30;
 warning_timer_running = false;
 const timer_display = document.getElementById("timer");
 const combat_log = document.getElementById("combatLog");
@@ -14,7 +14,6 @@ const controlSocket = new WebSocket('ws://' + window.location.host + '/ws/contro
 
 gameSocket.onmessage = function(e) {
     const data = JSON.parse(e.data);
-    let text = "";
     for (const x in data["messages"]) {
         combat_log.innerHTML = JSON.stringify(data["messages"][x]) + "<br>" + combat_log.innerHTML;
         for (var id in data.ids) {
@@ -30,7 +29,7 @@ gameSocket.onmessage = function(e) {
 
 function start_warning(){
     if(warning_timer_running == false && timer_running == false){
-        warning_time = 5;
+        warning_time = 30;
         interval = setInterval(display_time, 1000);
         warning_timer_running = true;
     }
@@ -63,7 +62,7 @@ function display_time(){
     if(warning_timer_running == true){
         if(warning_time < 1){
             clearInterval(interval);
-            warning_time = 10;
+            warning_time = 30;
             warning_timer_running = false;
             warning_timer_display.style.visibility = "hidden";
             var scores = document.getElementsByClassName("resettable");
@@ -81,7 +80,7 @@ function display_time(){
     }else{
         if(time < 0){
             clearInterval(interval);
-            time = 5*60;
+            time = 6*60;
             timer_running = false;
             return;
         }
