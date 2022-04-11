@@ -13,9 +13,13 @@ gameSocket.onmessage = function(e) {
     let text = "";
     for (const x in data["messages"]) {
         combat_log.innerHTML = JSON.stringify(data["messages"][x]) + "<br>" + combat_log.innerHTML;
+        for (var id in data.ids) {
+            var playerScore = document.getElementById("table-" + id);
+            playerScore.innerHTML = data.ids[id];
+            //console.log(data.ids[id]);
+        }
+        //console.log(JSON.stringify(data["ids"]));
     }
-    console.log(text);
-    //combat_log.innerHTML = data.messages + combat_log.innerHTML;
 }
 
 function start_warning(){
