@@ -8,8 +8,9 @@ const combat_log = document.getElementById("combatLog");
 const redPoints = document.getElementById("redPoints");
 const bluePoints = document.getElementById("bluePoints");
 const warning_timer_display = document.getElementById("warning_timer");
-const gameSocket = new WebSocket('ws://' + window.location.host + '/ws/game/');
-const controlSocket = new WebSocket('ws://' + window.location.host + '/ws/control/');
+
+const gameSocket = new WebSocket('wss://'+ window.location.host + '/ws/game/');
+const controlSocket = new WebSocket('wss://' + window.location.host + '/ws/control/');
 
 gameSocket.onmessage = function(e) {
     const data = JSON.parse(e.data);

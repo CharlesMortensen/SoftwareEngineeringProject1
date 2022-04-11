@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-x0#&cdh+gk@@6--)epj*oxfcr!=82vumoyep%gu=g=!w$0fgpf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://team2-lasertag.herokuapp.com']
 
 
 # Application definition
