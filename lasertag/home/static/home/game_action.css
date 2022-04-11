@@ -1,34 +1,3 @@
-#topHalf {
-    position: absolute;
-    top: 0;
-    right: 40%;
-    left: 0;
-    bottom: 50%;
-    overflow: auto;
-    padding: 10px;
-    margin-top: 60px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    border: 4px solid black;
-    text-align: center;
-}
-
-#bottomHalf {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    text-align:left;
-    padding: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    border: 4px solid black;
-    text-align: center;
-}
-
 #timerBox {
     position: absolute;
     top: 0;
@@ -44,21 +13,16 @@
     border: 4px solid black;
 }
 
-#redHeading {
+.redHeading {
     font-size: 56px;
     padding-right: 32px;
     color: Crimson;
 }
 
-#blueHeading {
+.blueHeading {
     font-size: 56px;
     padding-right: 32px;
     color: MediumBlue;
-}
-
-.playerTable {
-    display: inline-block;
-    vertical-align: top;
 }
 
 #warning_timer {
@@ -81,13 +45,6 @@
     font-size: 50px !important;
 }
 
-.timerButtons {
-    width: 50%;
-    margin-left: 25%;
-    margin-right: 25%;
-    text-align: center;
-}
-
 #timer {
     font-size: 100px;
 }
@@ -95,3 +52,38 @@
 td{
     font-size: 32px;
 }
+
+#content{
+    margin-top:60px;
+    margin-left:10px;
+    margin-right:10px;
+    height:calc(100vh - 60px);
+}
+
+.blink_text
+{
+    animation:1s blinker linear infinite;
+    -webkit-animation:1s blinker linear infinite;
+    -moz-animation:1s blinker linear infinite;
+}
+
+@-moz-keyframes blinker
+{  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes blinker
+{  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@keyframes blinker
+{  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+ }
