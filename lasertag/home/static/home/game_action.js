@@ -6,7 +6,7 @@ warning_timer_running = false;
 const timer_display = document.getElementById("timer");
 const combat_log = document.getElementById("combatLog");
 const warning_timer_display = document.getElementById("warning_timer");
-const gameSocket = new WebSocket('ws://'+ window.location.host + '/ws/game/');
+const gameSocket = new WebSocket('wss://'+ window.location.host + '/ws/game/');
 
 gameSocket.onmessage = function(e) {
     const data = JSON.parse(e.data);
