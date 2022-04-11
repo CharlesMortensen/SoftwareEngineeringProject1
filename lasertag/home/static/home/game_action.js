@@ -6,7 +6,8 @@ warning_timer_running = false;
 const timer_display = document.getElementById("timer");
 const combat_log = document.getElementById("combatLog");
 const warning_timer_display = document.getElementById("warning_timer");
-const gameSocket = new WebSocket('ws://'+ window.location.host + '/ws/game/');
+const gameSocket = new WebSocket('ws://' + window.location.host + '/ws/game/');
+const controlSocket = new WebSocket('ws://' + window.location.host + '/ws/control/');
 
 gameSocket.onmessage = function(e) {
     const data = JSON.parse(e.data);
@@ -24,7 +25,7 @@ gameSocket.onmessage = function(e) {
 
 function start_warning(){
     if(warning_timer_running == false && timer_running == false){
-        warning_time = 10;
+        warning_time = 5;
         interval = setInterval(display_time, 1000);
         warning_timer_running = true;
     }
@@ -32,6 +33,7 @@ function start_warning(){
 }
 function start_timer(){
     if(timer_running == false){
+        controlSocket.send("start");
         interval = setInterval(display_time, 1000);
         timer_running = true;
     }
@@ -43,6 +45,7 @@ function reset_timer(){
         display_time();
     }
     if(timer_running == true){
+        controlSocket.send("end");
         time = 0;
         combat_log.innerHTML = "";
         display_time();
