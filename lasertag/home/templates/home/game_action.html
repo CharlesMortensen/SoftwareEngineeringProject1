@@ -45,7 +45,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="redHeading" colspan="2">Red Team</th><th id="redPoints" class="redHeading">0</th>
+                                <th class="redHeading" colspan="2">Red Team</th><th id="redPoints" class="redHeading resettable">0</th>
                             </tr>
                         </thead>
                         <thead class="table-dark">
@@ -56,7 +56,7 @@
                         <tbody>
                             {% for red_player in red_team %}
                             <tr>
-                                <td>{{red_player.player_info.id}}</td><td>{{red_player.player_info.codename}}</td><td id="table-{{red_player.player_info.id}}">0</td> <!-- Points only update on refresh -->
+                                <td>{{red_player.player_info.id}}</td><td>{{red_player.player_info.codename}}</td><td id="table-{{red_player.player_info.id}}" class="resettable">0</td> <!-- Points only update on refresh -->
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -67,7 +67,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="blueHeading" colspan="2">Blue Team</th><th id="bluePoints" class="blueHeading">0</th>
+                                <th class="blueHeading" colspan="2">Blue Team</th><th id="bluePoints" class="blueHeading resettable">0</th>
                             </tr>
                         </thead>
                         <thead class="table-dark">
@@ -78,7 +78,7 @@
                         <tbody>
                             {% for blue_player in blue_team %}
                             <tr>
-                                <td>{{blue_player.player_info.id}}</td><td>{{blue_player.player_info.codename}}</td><td id="table-{{blue_player.player_info.id}}">0</td> <!-- Points only update on refresh -->
+                                <td>{{blue_player.player_info.id}}</td><td>{{blue_player.player_info.codename}}</td><td id="table-{{blue_player.player_info.id}}" class="resettable">0</td> <!-- Points only update on refresh -->
                             </tr>
                             {% endfor %}
                         </tbody>
