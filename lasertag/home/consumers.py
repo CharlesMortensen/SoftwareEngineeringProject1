@@ -12,6 +12,20 @@ class Game():
         bluepoints = bluepoints + x.points 
     is_running = False
 
+    def start():
+        Game.is_running = True
+        Game.redpoints = 0
+        Game.bluepoints = 0
+        ActivePlayer.objects.update(points=0)
+        LaserTagMessage.objects.all().delete()
+    
+    def end():
+        Game.is_running = False
+        Game.redpoints = 0
+        Game.bluepoints = 0
+        ActivePlayer.objects.update(points=0)
+        LaserTagMessage.objects.all().delete()
+
 class LasergunConsumer(WebsocketConsumer):
     def connect(self):
         self.accept()
@@ -69,14 +83,6 @@ class GameControlConsumer(WebsocketConsumer):
 
     def receive(self, text_data):
         if text_data == "start":
-            Game.is_running = True
-            Game.redpoints = 0
-            Game.bluepoints = 0
-            ActivePlayer.objects.update(points=0)
-            LaserTagMessage.objects.all().delete()
+            Game.start()
         elif text_data == "end":
-            Game.is_running = False
-            Game.redpoints = 0
-            Game.bluepoints = 0
-            ActivePlayer.objects.update(points=0)
-            LaserTagMessage.objects.all().delete()
+            Game.end()
